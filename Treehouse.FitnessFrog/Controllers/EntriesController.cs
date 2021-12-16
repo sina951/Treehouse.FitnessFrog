@@ -69,7 +69,8 @@ namespace Treehouse.FitnessFrog.Controllers
 
             return View(entry);
         }
-
+        // remember int? makes id a nullable type. if we didnt allow nulls MCV would throw a routing error. Having null makes it so that entries/delete, entries/edit pass to be successfully routed to our action methods
+        // so we are checking if id parameter is null, and returning a 404 error when we reject requests that don't include an ID parameter.
         public ActionResult Edit(int? id)
         {
             if (id == null)
