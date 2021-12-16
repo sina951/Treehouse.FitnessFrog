@@ -11,6 +11,7 @@ namespace Treehouse.FitnessFrog.Controllers
 {
     public class EntriesController : Controller
     {
+        // call repository to get the list of available entries
         private EntriesRepository _entriesRepository = null;
 
         public EntriesController()
@@ -22,7 +23,7 @@ namespace Treehouse.FitnessFrog.Controllers
         {
             List<Entry> entries = _entriesRepository.GetEntries();
 
-            // Calculate the total activity.
+            // Calculate the total activity. Using Linq, Filters our entries with Exclude properties set to true!
             double totalActivity = entries
                 .Where(e => e.Exclude == false)
                 .Sum(e => e.Duration);
@@ -32,7 +33,7 @@ namespace Treehouse.FitnessFrog.Controllers
                 .Select(e => e.Date)
                 .Distinct()
                 .Count();
-
+            // before we call View() method. We set the property values, remember viewBag helps us pass data from controller to view! 
             ViewBag.TotalActivity = totalActivity;
             ViewBag.AverageDailyActivity = (totalActivity / (double)numberOfActiveDays);
 

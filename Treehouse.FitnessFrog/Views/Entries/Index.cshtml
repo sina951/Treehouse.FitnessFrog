@@ -1,5 +1,5 @@
 ﻿@model List<Treehouse.FitnessFrog.Models.Entry>
-
+@*model directive above makes our model directive strongly typed*@
 @{
     ViewBag.Title = "Entries";
 }
@@ -45,6 +45,8 @@
             <td>@entry.Duration.ToString("0.0#")</td>
             <td class="hidden-xs">@entry.Intensity</td>
             <td>
+                @*Our button are actually styled hyperlinks, we are calling the URL.Action method to get URL to edit entry, delete entry by supplying the route value
+                with this anonymous object new { id = entry.Id })*@
                 <div class="pull-right">
                     <a href="@Url.Action("Edit", new { id = entry.Id })" class="btn btn-warning btn-sm margin-right">
                         <span class="glyphicon glyphicon-edit"></span><span class="hidden-xs"> Edit</span>
