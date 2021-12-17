@@ -41,7 +41,7 @@ namespace Treehouse.FitnessFrog.Controllers
         }
         public ActionResult Add()
         {
-            /// How is this possible?( shprt answer: value type to reference type which connects auto to class propeties) 
+            /// How is this possible?( shprt answer:value type to reference type which connects auto to class propeties) 
             /// MVC Model binder will recognize that our parameter is an instance
             /// of a class or reference type instead of a value type like string, int, double, or datytime
             /// and attempt to bind incoming form fields values to its properties, as long as the field names match
@@ -67,7 +67,8 @@ namespace Treehouse.FitnessFrog.Controllers
                 _entriesRepository.AddEntry(entry);
 
                 TempData["Message"] = "Your entry was successfully added!";
-
+                // Get back to Homepage main page ---> entry's list page, thanks to the RedirectToAction() method
+                // post/redirect/get common web developement design pattern for preventing duplicate form submissions - https://en.wikipedia.org/wiki/Post/Redirect/Get
                 return RedirectToAction("Index");
             }
 
