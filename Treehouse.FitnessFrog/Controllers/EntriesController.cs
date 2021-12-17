@@ -41,6 +41,12 @@ namespace Treehouse.FitnessFrog.Controllers
         }
         public ActionResult Add()
         {
+            /// How is this possible?( shprt answer: value type to reference type which connects auto to class propeties) 
+            /// MVC Model binder will recognize that our parameter is an instance
+            /// of a class or reference type instead of a value type like string, int, double, or datytime
+            /// and attempt to bind incoming form fields values to its properties, as long as the field names match
+            /// the classes property names the entry object's properties will contain the expected values.
+            /// Here our action methods pass an instance of the entry data model to our view.
             var entry = new Entry()
             {
                 Date = DateTime.Today,
@@ -94,7 +100,8 @@ namespace Treehouse.FitnessFrog.Controllers
         public ActionResult Edit(Entry entry)
         {
             ValidateEntry(entry);
-
+            // Remember the ModelState object automnaticaly is tracking all of form field value errors
+            // it is able to tell us if our model is in a valid state
             if (ModelState.IsValid)
             {
                 _entriesRepository.UpdateEntry(entry);

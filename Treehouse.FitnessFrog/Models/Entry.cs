@@ -21,6 +21,12 @@ namespace Treehouse.FitnessFrog.Models
         /// <summary>
         /// Default constructor.
         /// </summary>
+        /// How is this possible(value type to reference type which connects auto to class propeties)? 
+        /// MVC Model binder will recognize that our parameter is an instance
+        /// of a class or reference type instead of a value type like string, int, double, or datytime
+        /// and attempt to bind incoming form fields values to its properties, as long as the field names match
+        /// the classes property names the entry object's properties will contain the expected values.
+        /// Here our action methods pass an instance of the entry data model to our view.  
         public Entry()
         {
         }
