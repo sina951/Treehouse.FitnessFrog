@@ -56,6 +56,9 @@ be available vai the views model property*@
 
                         <div class="form-group">
                             <div class="checkbox">
+                                @*The CheckBoxFor method just requires a lambda expression for the model property we are rendering a checkbox for*@
+                                @*DisplayNameFor method will render the name for the provided property*@
+                                @*Checkbox always needs an value of true or false so the server can render it. So MVC always sends a hidden value of true if no value is given or not.*@
                                 <label>
                                     @Html.CheckBoxFor(m => m.Exclude) @Html.DisplayNameFor(m => m.Exclude)
                                 </label>
