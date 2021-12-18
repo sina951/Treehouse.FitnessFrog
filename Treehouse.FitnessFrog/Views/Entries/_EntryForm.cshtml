@@ -1,6 +1,7 @@
 ﻿@*Remember adding the model directive @model, makes our view strongly typed and by doing it strongly typed
-the entry model instance that is being passed in the controllers call to the view method, will now 
-be available vai the views model property*@
+    the entry model instance that is being passed in the controllers call to the view method, will now
+    be available via the views model property*@
+@*This for view page is a partial(We can share the code between one or more views.) recognized by underscore naming convention _EntryForm*@
 @model Treehouse.FitnessFrog.Models.Entry
 @using Treehouse.FitnessFrog.Models
 
@@ -14,11 +15,11 @@ be available vai the views model property*@
 
         <div class="col-md-6">
             @*Html.LabelFor() is a Label HTML helper methdod, it requires name of property to render
-            class = "control-label" is our CSS class, we use the second label overload, which allowes us to pas an 
-            anonymous object for the labels HTML attributes
-            lamda m => m.Date is an anonymous method, m is a method parameter that is a reference to our views model property
-            the => is the transition from the parameter list to the method body, m.Date, is the property on our model, taht we are returning
-            from our anonymouse method, this appraoch makes it strongly typed way to specify the model property that we want to rende a label for*@
+                class = "control-label" is our CSS class, we use the second label overload, which allowes us to pas an
+                anonymous object for the labels HTML attributes
+                lamda m => m.Date is an anonymous method, m is a method parameter that is a reference to our views model property
+                the => is the transition from the parameter list to the method body, m.Date, is the property on our model, taht we are returning
+                from our anonymouse method, this appraoch makes it strongly typed way to specify the model property that we want to rende a label for*@
             <div class="form-group">
                 @Html.LabelFor(m => m.Date, new { @class = "control-label" })
                 @Html.TextBoxFor(m => m.Date, "{0:d}", new { @class = "form-control datepicker" })

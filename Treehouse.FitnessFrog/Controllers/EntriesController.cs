@@ -65,7 +65,8 @@ namespace Treehouse.FitnessFrog.Controllers
             if (ModelState.IsValid)
             {
                 _entriesRepository.AddEntry(entry);
-
+                // TempData can be used to pass data from a controller to a view(site). TempData survives to the next request and then expires.
+                // next you go to Index.cshtml to add if()
                 TempData["Message"] = "Your entry was successfully added!";
                 // Get back to Homepage main page ---> entry's list page, thanks to the RedirectToAction() method
                 // post/redirect/get common web developement design pattern for preventing duplicate form submissions - https://en.wikipedia.org/wiki/Post/Redirect/Get
