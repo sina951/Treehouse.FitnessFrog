@@ -157,6 +157,7 @@ namespace Treehouse.FitnessFrog.Controllers
 
         private void SetupActivitiesSelectListItems()
         {
+            // The first Data in Data.Data is the namespace for our data static class.
             ViewBag.ActivitiesSelectListItems = new SelectList(
                 Data.Data.Activities, "Id", "Name");
         }
