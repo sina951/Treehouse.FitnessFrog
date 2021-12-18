@@ -7,6 +7,7 @@ be available vai the views model property*@
 @*Here we use MVC's Html.BeginForm() MVC-HTML helpermethod to render the form element, be sure to wrap it in a using statement*@
 @using (Html.BeginForm())
 {
+    //using ValidationSummary method we can display the error messages inside the ModelState
     @Html.ValidationSummary("The following errors were found:", new { @class = "alert alert-danger" })
 
     <div class="row">
