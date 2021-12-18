@@ -84,16 +84,18 @@ namespace Treehouse.FitnessFrog.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
+            // call repository to get the entry for the provided Id parameter value(which is an nullable in, so we need cast it to an int in order to pass it into the get entry method)
+            // In short get the requested entry from the repository
             Entry entry = _entriesRepository.GetEntry((int)id);
 
+            // no entry? return status not found
             if (entry == null)
             {
                 return HttpNotFound();
             }
 
             SetupActivitiesSelectListItems();
-
+            // Pass the entry to View
             return View(entry);
         }
 
@@ -103,6 +105,7 @@ namespace Treehouse.FitnessFrog.Controllers
             ValidateEntry(entry);
             // Remember the ModelState object automnaticaly is tracking all of form field value errors
             // it is able to tell us if our model is in a valid state
+            // to check if an entry is valid we add this if statement that checks if ModelState IsValid property is true!
             if (ModelState.IsValid)
             {
                 _entriesRepository.UpdateEntry(entry);
@@ -144,6 +147,7 @@ namespace Treehouse.FitnessFrog.Controllers
             return RedirectToAction("Index");
         }
 
+        // Here is our server validation rule that ensures the duration field value is greater than zero 
         private void ValidateEntry(Entry entry)
         {
             // If there aren't any "Duration" field validation errors
@@ -155,6 +159,7 @@ namespace Treehouse.FitnessFrog.Controllers
             }
         }
 
+        // We call this method when, we need to populate the activities select list items ViewBag property
         private void SetupActivitiesSelectListItems()
         {
             // The first Data in Data.Data is the namespace for our data static class.
