@@ -41,7 +41,7 @@ namespace Treehouse.FitnessFrog.Controllers
         }
         public ActionResult Add()
         {
-            /// How is this possible?( shprt answer:value type to reference type which connects auto to class propeties) 
+            /// How is this possible?( short answer:value type to reference type which connects auto to class propeties) 
             /// MVC Model binder will recognize that our parameter is an instance
             /// of a class or reference type instead of a value type like string, int, double, or datytime
             /// and attempt to bind incoming form fields values to its properties, as long as the field names match
